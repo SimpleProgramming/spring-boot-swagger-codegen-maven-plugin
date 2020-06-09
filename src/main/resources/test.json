@@ -1,0 +1,358 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This API can be used to get profile level actions and information for an Employee",
+    "version": "V1.0",
+    "title": "Employee Profile API"
+  },
+  "host": "localhost:9091",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "employee-profile-controller",
+      "description": "Employee Profile Controller"
+    }
+  ],
+  "paths": {
+    "/profile/v1/employee": {
+      "post": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Insert Employee Record",
+        "operationId": "insertEmployeeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "employee",
+            "description": "Employee",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Update Employee Details",
+        "operationId": "updateEmployeeUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "employee",
+            "description": "Employee",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Delete an Employee",
+        "operationId": "deleteEmployeeUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "employee",
+            "description": "Employee",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Partial Update a specific Student in the System ",
+        "operationId": "patchEmployeeUsingPATCH",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "partialUpdate",
+            "description": "Employee",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/profile/v1/employee/fetch/all": {
+      "get": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Fetch All Employees",
+        "operationId": "fetchAllEmployeesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED!",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN!",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/profile/v1/employee/fetch/{department}": {
+      "get": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Get Employee By Department",
+        "operationId": "fetchEmployeeByDepartmentUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "department",
+            "in": "path",
+            "description": "Department Name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/profile/v1/employee/fetch/{name}": {
+      "get": {
+        "tags": [
+          "employee-profile-controller"
+        ],
+        "summary": "Fetch Employee by Name",
+        "operationId": "fetchEmployeeByNameUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Employee Name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Employee": {
+      "type": "object",
+      "required": [
+        "department",
+        "id",
+        "name",
+        "phoneNumber"
+      ],
+      "properties": {
+        "department": {
+          "type": "string",
+          "description": "Electrical"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "234567"
+        },
+        "name": {
+          "type": "string",
+          "description": "John"
+        },
+        "phoneNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "89434993939"
+        }
+      },
+      "title": "Employee",
+      "description": "Employee Model"
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "200"
+        },
+        "message": {
+          "type": "string",
+          "description": "Invalid field"
+        },
+        "status": {
+          "type": "string",
+          "description": "SUCCESS"
+        }
+      },
+      "title": "ErrorResponse",
+      "description": "Error Response Model"
+    }
+  }
+}

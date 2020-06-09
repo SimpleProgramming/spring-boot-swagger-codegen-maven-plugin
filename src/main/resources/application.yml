@@ -1,0 +1,7 @@
+server:
+  port: 9092
+
+employee:
+  profiles:
+    host:
+      uri: http://localhost:9091
